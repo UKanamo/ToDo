@@ -1,0 +1,25 @@
+import React from 'react';
+
+export class AddNewTask extends React.Component {
+    constructor() {
+        super();
+        this.justSubmitted = this.justSubmitted.bind(this);
+    }
+    justSubmitted(event) {
+        //ページがロードされるのを防ぐ
+        event.preventDefault();
+        //ユーザーが入力したテキストを取得
+        const input = event.target.querySelector('input');
+        const value = input.value;
+        //updateListをコール
+        this.props.updateList(value);
+    }
+    render() {
+        return (
+                //onSubmitでjustSubmittedを発火
+                <form onSubmit={this.justSubmitted}>
+                    <input type="text" />
+                </form>
+            );
+    }
+}
